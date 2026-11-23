@@ -7,5 +7,6 @@ jobs:
     permissions: { contents: read, packages: write }
     uses: ArachneDev/app-pipeline/.github/workflows/build.yml@v1
     with: { app-json: ci/app.json }
-    # The pipeline input that runs the bot under the same contract test is being added separately:
-    # contract-exec: node apps/bot/dist/main.js
+    # Once app-pipeline's v1 has the contract-exec input, test the bot mode too, with `with:` in block form:
+    #   contract-exec: |
+    #     node apps/bot/dist/main.js | node apps/bot/dist/healthcheck.js
