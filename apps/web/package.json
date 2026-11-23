@@ -13,7 +13,7 @@
     "@scrimbot/core": "workspace:*",
     "@scrimbot/db": "workspace:*",
     "drizzle-orm": "^0.45.4",
-    "hono": "^4.13.14",
+    "hono": "^4.13.19",
     "pino": "^10.4.0",
     "zod": "^4.6.7"
   },
