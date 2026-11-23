@@ -1,8 +1,40 @@
 {
-  "name": "app-starter",
-  "version": "0.0.0",
+  "name": "scrimbot",
   "private": true,
   "type": "module",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=22" }
+  "packageManager": "pnpm@12.16.1",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -b && pnpm --filter @scrimbot/web build:client",
+    "typecheck": "tsc -b && tsc -p tsconfig.tests.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:db": "vitest run --config vitest.db.config.ts",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm build && pnpm test && pnpm py:check",
+    "db:generate": "pnpm --filter @scrimbot/db generate",
+    "db:migrate": "pnpm --filter @scrimbot/db migrate",
+    "db:dev-roles": "pnpm --filter @scrimbot/bot dev-roles",
+    "dev:bot": "pnpm --filter @scrimbot/bot dev",
+    "dev:web": "pnpm --filter @scrimbot/web dev",
+    "dev": "scripts/dev.sh",
+    "commands:deploy": "pnpm --filter @scrimbot/bot commands:deploy",
+    "new:command": "tsx apps/bot/src/scripts/new-command.ts",
+    "py:setup": "python3 -m venv python/.venv && python/.venv/bin/pip install -q -r python/requirements-dev.txt",
+    "py:check": "python/.venv/bin/ruff check python && python/.venv/bin/ruff format --check python && cd python && .venv/bin/pytest -q",
+    "py:format": "python/.venv/bin/ruff check --fix python && python/.venv/bin/ruff format python"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "~10.13.0",
+    "prettier": "^3.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.0",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
+  }
 }

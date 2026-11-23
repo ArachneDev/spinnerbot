@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@scrimbot/core": ["./packages/core/src/index.ts"],
+      "@scrimbot/db": ["./packages/db/src/index.ts"]
+    }
+  },
+  "include": ["packages/*/test", "apps/*/test", "apps/bot/dev"]
+}

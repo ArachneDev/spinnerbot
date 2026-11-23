@@ -1,0 +1,539 @@
+/* Arachne — generated from tokens.json */
+:root,
+[data-theme="arachne"] {
+  --background: oklch(
+    0.13 0.004 20
+  ); /* Page ground under the film-grain overlay. Every text token below is checked on it. */
+  --foreground: oklch(
+    0.92 0.005 60
+  ); /* Body copy and headings on background, card, secondary (13.7:1 or more). */
+  --card: oklch(
+    0.17 0.005 20
+  ); /* Cards: match cards, roster cards, league records, booking cards. */
+  --card-foreground: var(--foreground); /* Text on card. */
+  --popover: oklch(0.17 0.005 20); /* Menus, popovers, dialogs. */
+  --popover-foreground: var(--foreground); /* Text on popover. */
+  --primary: oklch(
+    0.58 0.23 27
+  ); /* Arachne red: the tactical button fill, active rules, the section-index dash, hover borders. As text it is 4.18:1 on background (arachne) — fine at 24px+, not for small text. */
+  --primary-foreground: oklch(
+    0.98 0 0
+  ); /* Label on a primary fill (4.54:1 arachne, 5.01:1 wardogs). */
+  --secondary: oklch(
+    0.22 0.006 20
+  ); /* Raised bands (recruitment strip, table header), secondary buttons. */
+  --secondary-foreground: var(--foreground); /* Text on secondary. */
+  --muted: oklch(0.2 0.005 20); /* Quiet fills. */
+  --muted-foreground: oklch(
+    0.62 0.01 40
+  ); /* Secondary copy, mono labels, dates on background and card (5.2:1+), secondary (4.74:1). */
+  --accent: oklch(
+    0.25 0.03 25
+  ); /* Hover surface for outline/ghost buttons (wardogs value: the stat strip's red-black). */
+  --accent-foreground: oklch(0.95 0 0); /* Text on accent. */
+  --destructive: oklch(0.58 0.23 27); /* Destructive fills; same red as primary. */
+  --destructive-foreground: oklch(0.98 0 0); /* Label on destructive. */
+  --border: oklch(
+    0.28 0.008 20
+  ); /* Default hairline everywhere (1.37:1 — a divider, never a control's only edge). */
+  --input: oklch(
+    0.28 0.008 20
+  ); /* Input borders. Under the 3:1 control-border floor in both themes; kept exact. */
+  --ring: oklch(0.58 0.23 27); /* 1px focus ring on buttons (focus-visible). */
+  --crest: oklch(0.08 0 0); /* Deepest ground: ticker bar, footer, emblem frames, video wells. */
+  --signal: oklch(
+    0.76 0.14 25
+  ); /* Coral signal: the full stop after page titles, the hero motto. Wardogs: the signal red for eyebrows, figures, indicators. Text on background 8.85:1 (arachne), 5.5:1 (wardogs). */
+  --steel: oklch(
+    0.78 0.01 250
+  ); /* Cool grey: outline-button borders (at 40%), nationality chips, upcoming-record top rule. */
+  --win: oklch(0.72 0.15 145); /* 1st-place and win text on background and card. */
+  --loss: oklch(0.58 0.23 27); /* Loss marker (same as primary). */
+  --medal-gold: oklch(0.82 0.14 85); /* 1st place placements and table columns. */
+  --medal-silver: oklch(0.87 0.015 250); /* 2nd place. */
+  --medal-bronze: oklch(0.62 0.11 45); /* 3rd place (5.05:1 on card). */
+  --page-hq: oklch(
+    0.58 0.23 27
+  ); /* Page colour — HQ: nav hover/active text, glow and underline, ticker markers. */
+  --page-about: #e8e2d5; /* Page colour — About (bone). */
+  --page-structure: #b87333; /* Page colour — Clan Structure (copper). */
+  --page-roster: #2e8b57; /* Page colour — Roster (green). 4.74:1 on background, 4.09:1 on secondary — keep it off secondary for small text. */
+  --page-matches: oklch(
+    0.7 0.13 240
+  ); /* Page colour — Matches (sky); also the match accent: Friendlies record rule, map pin, the RCNE row of league tables. */
+  --page-fame: oklch(0.65 0.2 305); /* Page colour — Hall of Fame (violet). */
+  --page-media: #d4b483; /* Page colour — Media (sand). */
+  --page-enlist: oklch(0.72 0.18 145); /* Page colour — Enlist (green). */
+  --match-accent: var(--page-matches); /* Matches accent — an alias of page-matches. */
+  --squad-forgeweaver: oklch(
+    0.74 0.2 130
+  ); /* Squad colour — ForgeWeaver (Builders). Not in the Fight Night board. */
+  --squad-cerberus: oklch(
+    0.57 0.23 25
+  ); /* Squad colour — Cerberus (Assault). Arachne value is 4.0:1 on background: use at 24px+ or as a fill/rule. */
+  --squad-blackspear: oklch(0.77 0.16 80); /* Squad colour — BlackSpear (Assault). */
+  --squad-direhound: oklch(0.7 0.19 45); /* Squad colour — DireHound (Assault). */
+  --squad-deadwatch: oklch(0.77 0.14 205); /* Squad colour — DeadWatch (Recon). */
+  --squad-deathwing: oklch(0.63 0.2 305); /* Squad colour — Deathwing (Air Assault). */
+  --squad-dreadnought: oklch(0.62 0.17 250); /* Squad colour — Dreadnought (Mech Assault). */
+  --bg-glow: #62080c44; /* Fight Night: Red radial glow at the top-left of the page background (ellipse at 10% 0%, fading by 40%). Decorative only. */
+  --lattice: #ffffff02; /* Fight Night: The two 60°/-60° hairline lattices over bg (1px lines on a 38px repeat). Decorative only. */
+  --squad-top: #17171b; /* Fight Night: Start of a squad card's 135° gradient (to bg); the darkest ground text sits on inside a card. */
+  --stat-glow: #231316aa; /* Fight Night: Start of the stat strip's 110° gradient (to panel). */
+  --field: #0c0b0e; /* Fight Night: Input, select and textarea fill. */
+  --line-squad: #302a2e; /* Fight Night: Squad card border at rest (hover swaps it to the unit colour). */
+  --line-stat: #39292d; /* Fight Night: Stat strip border. */
+  --line-card: #3b3037; /* Fight Night: Booking card and organizer section border. */
+  --line-button: #51404a; /* Fight Night: Squad card action button border. */
+  --line-pill: #70404a; /* Fight Night: Pill border at rest. */
+  --line-pill-muted: #45363b; /* Fight Night: Team-heading count pill border. */
+  --line-reserved: #51464e; /* Fight Night: Reserved squad pill border. */
+  --line-dialog: #85404b; /* Fight Night: Dialog border. */
+  --rule-masthead: #74232c66; /* Fight Night: Masthead bottom border. */
+  --rule-footer: #76242d66; /* Fight Night: Footer top border. */
+  --rule-aside: #46232b; /* Fight Night: Rule above the brief/privacy row. */
+  --rule-hero-art: #553038; /* Fight Night: Divider left of the hero motto. */
+  --frame: #83212b66; /* Fight Night: The fixed 1px frame drawn 10px inside the viewport on every page. */
+  --text-strong: #e1d9df; /* Fight Night: Filled roster slots and the leader slot on squad-top (12.9:1). */
+  --text-motto: #d5cfd1; /* Fight Night: Hero motto (ONE PACK // ONE PURPOSE) on bg. */
+  --muted-intro: #b5b0b4; /* Fight Night: Hero intro line on bg. */
+  --muted-brief: #b4a5ae; /* Fight Night: Brief row labels on panel. */
+  --muted-micro: #aba0a8; /* Fight Night: Micro/fine print on bg and card. */
+  --slot: #928990; /* Fight Night: Empty roster slot text on squad-top (5.28:1). */
+  --pill-reserved: #bcb4ba; /* Fight Night: Reserved pill text on squad-top. */
+  --pill-team: #c2b6bb; /* Fight Night: Team-heading count pill text on bg. */
+  --accent-stat: #ff4555; /* Fight Night: The open-places figure in the stat strip, on stat-glow/panel. */
+  --accent-hero-rule: #f32d3e; /* Fight Night: Start of the 3px hero bottom rule gradient (to transparent). */
+  --glow-signal: #fc3149; /* Fight Night: Glow colour of the live dot. */
+  --pill-text: #ff8290; /* Fight Night: Default pill text on bg and panel. */
+  --primary-line: #ed3444; /* Fight Night: Primary button border. */
+  --primary-hover: #f23243; /* Fight Night: Primary button hover fill. White label is 3.95:1 here — below 4.5:1 for the 13px label; kept exact from the source. */
+  --disabled: #252326; /* Fight Night: Disabled primary button fill (label muted, border disabled-line). */
+  --disabled-line: #3c3539; /* Fight Night: Disabled primary button border. */
+  --crown: #edbd3b; /* Fight Night: The ♛ squad-leader glyph on squad-top (10.2:1). */
+  --crown-glow: #f7b52866; /* Fight Night: Text-shadow glow behind the leader crown. */
+  --notice-bg: #33171bcc; /* Fight Night: Notice banner fill. */
+  --notice-line: #7c343c; /* Fight Night: Notice banner border. */
+  --notice-text: #f6c7cc; /* Fight Night: Notice banner text on notice-bg (11.6:1). */
+  --demo-bg: #261617; /* Fight Night: Local-demo strip fill above the masthead. */
+  --demo-line: #51252a; /* Fight Night: Local-demo strip bottom border. */
+  --demo-text: #f3b9bf; /* Fight Night: Local-demo strip text on demo-bg (10.3:1). */
+  --squad-cerberus-glow: #ff34451a; /* Fight Night: Cerberus card glow, emblem shield fill and button hover fill. */
+  --squad-direhound-glow: #ff851c19; /* Fight Night: Direhound card glow. */
+  --squad-blackspear-glow: #eec31d17; /* Fight Night: Blackspear card glow. */
+  --squad-deadwatch-glow: #1dc5df20; /* Fight Night: Deadwatch card glow. */
+  --squad-dreadnought-glow: #5488ff1a; /* Fight Night: Dreadnought card glow. */
+  --squad-deathwing-glow: #be64ed22; /* Fight Night: Deathwing card glow. */
+  --danger-text: #ff7b86; /* Fight Night: danger text (Cancel booking, form errors) on background, secondary, card (7.2:1 or more). */
+  --glow-red: 0 0 24px -4px #e3121eb3; /* Red bloom (utility glow-red): primary at 70%. */
+  --shadow-record:
+    0 8px 0 -5px #020202, 0 16px 30px -10px #020202cc, inset 0 1px 0 #e7e4e112; /* The stacked plate under league-record cards (crest ledge, crest drop, foreground top highlight). */
+  --glow-live: 0 0 10px #fc3149; /* The rotated-square live dot. */
+  --tab-indicator: 0 2px 0 #ff3445; /* Underline of the selected tab. */
+  --title-drop: 0 3px 0 #00000088; /* Text-shadow under the hero title. */
+  --glow-crown: 0 0 12px #f7b52866; /* Text-shadow on the leader crown. */
+}
+[data-theme="wardogs"] {
+  --background: #09090c;
+  --foreground: #f1f0ef;
+  --card: #151217;
+  --card-foreground: var(--foreground);
+  --popover: #151217;
+  --popover-foreground: var(--foreground);
+  --primary: #d82232;
+  --primary-foreground: #ffffff;
+  --secondary: #111114;
+  --secondary-foreground: var(--foreground);
+  --muted: #111114;
+  --muted-foreground: #a8a4a8;
+  --accent: #231316;
+  --accent-foreground: #f1f0ef;
+  --destructive: #d82232;
+  --destructive-foreground: #ffffff;
+  --border: #2b292c;
+  --input: #4c3b45;
+  --ring: #ff3445;
+  --crest: #0c0b0e;
+  --signal: #ff3445;
+  --match-accent: var(--page-matches);
+  --squad-cerberus: #ff3445;
+  --squad-blackspear: #eec31d;
+  --squad-direhound: #ff851c;
+  --squad-deadwatch: #1dc5df;
+  --squad-deathwing: #be64ed;
+  --squad-dreadnought: #5488ff;
+}
+:root {
+  --gutter: 20px; /* Page side padding (px-5); card padding p-5. */
+  --gutter-lg: 32px; /* Page side padding from 1024px (lg:px-8). */
+  --card-pad: 24px; /* Card padding from 640px (sm:p-6); record cards 28px (sm:p-7). */
+  --stack: 16px; /* Default gap inside cards and between header parts (mt-4). */
+  --section: 64px; /* Vertical section padding (py-16). */
+  --section-index-rule: 22px; /* Width of the primary dash before a section index (2px tall). */
+  --space-hairline: 3px; /* Fight Night: Pill vertical padding; the thick top stripe and hero rule weight. */
+  --space-slot: 8px; /* Fight Night: Gap between roster slots and between clan rows. */
+  --space-frame: 10px; /* Fight Night: Inset of the fixed viewport frame; button horizontal gap. */
+  --space-stack: 14px; /* Fight Night: Gap between parts of a squad card and the brief rows. */
+  --space-grid: 18px; /* Fight Night: Gap between squad cards. */
+  --space-card: 20px; /* Fight Night: Squad card and booking card padding. */
+  --space-panel: 22px; /* Fight Night: Side card padding; mobile page gutter. */
+  --space-section: 24px; /* Fight Night: Hero bottom margin, aside gap and rule spacing. */
+  --space-dialog: 27px; /* Fight Night: Dialog padding. */
+  --space-tabs: 29px; /* Fight Night: Gap between tabs. */
+  --space-gutter: 38px; /* Fight Night: Desktop page gutter (left/right of .wrap). */
+  --radius-sm: 0; /* Clan site: almost everything (Tailwind rounded-sm). */
+  --radius-md: 1px; /* Clan site: rounded-md — buttons and badges. */
+  --radius-lg: 2px; /* Clan site: rounded-lg; also the base --radius. */
+  --radius-xl: 3px; /* Clan site: rounded-xl. */
+  --radius-none: 0; /* Fight Night: Cards, stat strip, panels, booking cards — the Wardogs board is square. */
+  --radius-sharp: 2px; /* Fight Night: Buttons, pills, inputs, dialogs. */
+  --radius-round: 50%; /* Fight Night: The circular logo only. */
+  --header: 80px; /* Site header height (h-20). */
+  --ticker-bar: 36px; /* Ticker bar height (h-9). */
+  --container: 1280px; /* Clan site content max width (max-w-7xl). */
+  --clip-notch: 14px; /* Chamfer cut from the top-right and bottom-left corners of tactical buttons and emblem frames. */
+  --notch: 20px; /* Square triangle cut from a squad card's top-right corner (border-top 20px in bg, border-left 20px transparent). */
+  --stripe: 3px; /* Unit-colour top border of squad cards and the hero bottom rule. */
+  --emblem: 49px; /* Unit emblem width on squad cards (48px mobile). */
+  --logo: 58px; /* Masthead logo width (44px mobile). */
+  --masthead: 106px; /* Masthead height on desktop. */
+  --content-max: 1440px; /* Max width of the page wrapper. */
+  --bp-sm: 640px; /* Clan site: titles step up, cards pad 24px. */
+  --bp-md: 768px; /* Clan site: stat band 4 columns. */
+  --bp-lg: 1024px; /* Clan site: 96px titles, 2-column sections, 32px gutters. */
+  --bp-xl: 1280px; /* Clan site: full navigation shows; below it the menu button. */
+  --bp-wide: 1500px; /* Above: squad titles 35px. */
+  --bp-tablet: 1050px; /* Below: squad grid 2 columns, brief 2 columns. */
+  --bp-mobile: 680px; /* Below: single column, hero art hidden, gutters space-panel. */
+  --grain: 0.07; /* Fractal-noise overlay over the whole page. */
+  --masthead-image: 0.25; /* Hero battlefield image behind page headers. */
+  --disabled-control: 0.5; /* Disabled buttons. */
+  --disabled-squad: 0.55; /* A reserved or closed squad card's button. */
+  --emblem-shield: 0.38; /* The shield outline and fill behind each unit emblem. */
+  --font-display: "Black Ops One", Oswald, sans-serif;
+  --font-heading: Oswald, sans-serif;
+  --font-sans: Barlow, sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
+  --font-event-display: Impact, "Arial Narrow", "Segoe UI", sans-serif;
+  --font-event-sans: "Segoe UI", Arial, sans-serif;
+  --font-event-mono: Consolas, monospace;
+  --text-page-title: 400 96px/0.95 var(--font-display); /* Page and hero titles, UPPERCASE, followed by a signal-coloured full stop. 48px base, 72px from 640px, 96px from 1024px; 40px under 400px. */
+  --text-stat-value: 400 48px/48px var(--font-display); /* Big figures (clan stat band), UPPERCASE; 36px on mobile. */
+  --text-record-value: 400 36px/40px var(--font-display); /* Record figures and placements (league record, match card), UPPERCASE; 30px on small screens. */
+  --text-wordmark: 400 24px/1 var(--font-display); /* The ARACHNE wordmark beside the logo in header and footer. */
+  --text-section-heading: 500 36px/40px var(--font-heading); /* Section headings (h2), UPPERCASE; 30px on mobile. */
+  --text-card-heading: 500 24px/32px var(--font-heading); /* Card and role headings (h3), UPPERCASE. */
+  --text-subhead: 500 24px/32px var(--font-heading); /* Page subheading under the title, UPPERCASE; 20px on mobile. */
+  --text-nav-link: 500 17px/20px var(--font-heading); /* Main navigation items, UPPERCASE, muted until hovered or active (then the page colour). */
+  --text-button-label: 500 14px/20px var(--font-heading); /* Tactical buttons, UPPERCASE; 16px in the header CTA. */
+  --text-lead: 400 18px/29px var(--font-sans); /* Page intros and role summaries. */
+  --text-body: 400 16px/24px var(--font-sans); /* Default copy. */
+  --text-small: 400 14px/20px var(--font-sans); /* Table cells, secondary paragraphs. */
+  --text-micro: 400 12px/16px var(--font-sans); /* Card footnotes and stat sub-lines. */
+  --text-ticker: 600 12px/16px var(--font-sans); /* Ticker labels, UPPERCASE (values at 500). */
+  --text-section-index: 400 12px/16px var(--font-mono); /* Section index above headings, UPPERCASE, led by a 22×2px primary dash. */
+  --text-mono-label: 400 11px/16px var(--font-mono); /* Data labels (Position, Points), table headers, footer lines, UPPERCASE. */
+  --text-tagline: 400 10px/1.25 var(--font-mono); /* Tagline under the header wordmark. */
+  --text-hero-title: 400 72px/1.06 var(--font-event-display); /* Page title (h1), UPPERCASE, text-shadow title-drop. Scales clamp(36px, 5vw, 72px); 42px under 680px. */
+  --text-squad-title: 400 33px/1.05 var(--font-event-display); /* Squad name on a squad card, UPPERCASE. clamp(23px, 2.4vw, 33px); 35px over 1500px, 31px on mobile. */
+  --text-stat-figure: 400 29px/1.3 var(--font-event-display); /* Stat strip figures, UPPERCASE. */
+  --text-dialog-title: 400 29px/1.2 var(--font-event-display); /* Dialog heading, UPPERCASE. */
+  --text-card-title: 400 27px/1.2 var(--font-event-display); /* Booking card heading, UPPERCASE. */
+  --text-brief-title: 400 26px/1.2 var(--font-event-display); /* Side brief heading, UPPERCASE. */
+  --text-section-title: 400 24px/1.2 var(--font-event-display); /* Team heading and organizer section titles, UPPERCASE. */
+  --text-body-text: 400 15px/1.55 var(--font-event-sans); /* Default body copy. */
+  --text-intro-text: 400 13px/1.7 var(--font-event-sans); /* Hero intro line in muted-intro. */
+  --text-button-text: 600 13px/1.55 var(--font-event-sans); /* Buttons, sentence case; ↗ trails an action that leaves or opens. */
+  --text-form-label: 500 12px/1.55 var(--font-event-sans); /* Form labels; inputs inherit body-text. */
+  --text-slot-text: 400 12px/1.55 var(--font-event-sans); /* Roster slot rows on squad cards (13px on mobile). */
+  --text-fine-print: 400 11px/1.6 var(--font-event-sans); /* Micro notes under forms and bookings, in muted-micro. */
+  --text-kicker-hero: 700 11px/1.55 var(--font-event-sans); /* Hero eyebrow, UPPERCASE, accent. */
+  --text-tab-label: 600 11px/1.55 var(--font-event-sans); /* Tabs and squad-card buttons, UPPERCASE. */
+  --text-kicker: 700 10px/1.55 var(--font-event-sans); /* Section eyebrows (THE BRIEF, RESERVE YOUR SQUAD), UPPERCASE, accent. */
+  --text-detail: 400 10px/1.55 var(--font-event-sans); /* Squad detail line, UPPERCASE, muted. */
+  --text-unit-tag: 700 9px/1.55 var(--font-event-sans); /* Role tag above a squad name, UPPERCASE, in the unit colour. */
+  --text-caption: 400 9px/1.55 var(--font-event-sans); /* Stat captions and footer, UPPERCASE, muted. */
+  --text-pill-text: 600 9px/1.55 var(--font-event-sans); /* Status pills, UPPERCASE. */
+  --text-op-code: 400 10px/1.55 var(--font-event-mono); /* Operation code above the motto, accent. */
+  --text-team-index: 400 11px/1.55 var(--font-event-mono); /* Team index before a team name, accent. */
+}
+.page-title {
+  font-family: var(--font-display);
+  font-size: 96px;
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.record-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.card-heading {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.subhead {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.nav-link {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.button-label {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.lead {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 29px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.small {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.micro {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.ticker {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.tagline {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.hero-title {
+  font-family: var(--font-event-display);
+  font-size: 72px;
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+}
+.squad-title {
+  font-family: var(--font-event-display);
+  font-size: 33px;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+.stat-figure {
+  font-family: var(--font-event-display);
+  font-size: 29px;
+  line-height: 1.3;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+.dialog-title {
+  font-family: var(--font-event-display);
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+.card-title {
+  font-family: var(--font-event-display);
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.brief-title {
+  font-family: var(--font-event-display);
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.motto {
+  font-family: var(--font-event-display);
+  font-size: 25px;
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+}
+.section-title {
+  font-family: var(--font-event-display);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.body-text {
+  font-family: var(--font-event-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.intro-text {
+  font-family: var(--font-event-sans);
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.button-text {
+  font-family: var(--font-event-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.form-label {
+  font-family: var(--font-event-sans);
+  font-size: 12px;
+  line-height: 1.55;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.slot-text {
+  font-family: var(--font-event-sans);
+  font-size: 12px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.fine-print {
+  font-family: var(--font-event-sans);
+  font-size: 11px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.kicker-hero {
+  font-family: var(--font-event-sans);
+  font-size: 11px;
+  line-height: 1.55;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+.tab-label {
+  font-family: var(--font-event-sans);
+  font-size: 11px;
+  line-height: 1.55;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+.kicker {
+  font-family: var(--font-event-sans);
+  font-size: 10px;
+  line-height: 1.55;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+.detail {
+  font-family: var(--font-event-sans);
+  font-size: 10px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+.unit-tag {
+  font-family: var(--font-event-sans);
+  font-size: 9px;
+  line-height: 1.55;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+.caption {
+  font-family: var(--font-event-sans);
+  font-size: 9px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+}
+.pill-text {
+  font-family: var(--font-event-sans);
+  font-size: 9px;
+  line-height: 1.55;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+}
+.op-code {
+  font-family: var(--font-event-mono);
+  font-size: 10px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+.team-index {
+  font-family: var(--font-event-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}

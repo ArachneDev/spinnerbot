@@ -1,0 +1,1 @@
+ALTER TABLE "roster_instances" ADD COLUMN "revision" integer DEFAULT 0 NOT NULL;

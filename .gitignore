@@ -1,13 +1,31 @@
+node_modules/
+dist/
+*.tsbuildinfo
 .env
 .env.*
 !.env.example
+coverage/
+python/.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Credentials for the throwaway test bot. Never commit.
+testerBot/
+
+# Members' Steam accounts copied from Discord, input for steam:import. Never commit.
+data/
 *.pem
 *.key
 *.p12
 credentials*
 secrets*
 !ci/app.json
-node_modules/
-data/
 *.sqlite
 *.db
+
+# The art (banner, crests, emblems, backgrounds). Never committed: a developer gets it from the owner.
+/assets/
+
+# The owner's own scripts, run against the real bot. Never committed.
+owner-test-scripts/

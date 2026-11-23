@@ -1,0 +1,1 @@
+ALTER TABLE "roster_instances" ADD COLUMN "posted_answer_options" jsonb;
