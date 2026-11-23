@@ -1,0 +1,1 @@
+ALTER TABLE "roster_instances" ALTER COLUMN "answer_options" SET DEFAULT '[{"key":"confirmed","label":"Confirm","emoji":{"name":"✅"}},{"key":"denied","label":"Can’t make it","emoji":{"name":"❌"}}]'::jsonb;

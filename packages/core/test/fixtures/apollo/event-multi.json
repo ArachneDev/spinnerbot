@@ -1,0 +1,157 @@
+{
+  "type": 0,
+  "content": "",
+  "mentions": [],
+  "mention_roles": [],
+  "attachments": [],
+  "embeds": [
+    {
+      "type": "rich",
+      "title": "Scrimtest",
+      "description": "Friendly Match\nFriday 9th October at <t:1791568800:t>\n\nWe face two new opponents:\n\n<:clan_a:100000000000000101> AAA - ALPHA CLAN\n<:clan_b:100000000000000102> BBB - BRAVO CLAN\n\nMap: Example Map - Default\n\nThis match is open to <:squad_one:100000000000000103> SQUAD ONE and <:squad_two:100000000000000104> SQUAD TWO.\n\nSign up and show us what you've got!",
+      "color": 15844367,
+      "fields": [
+        {
+          "name": "Time",
+          "value": "<t:1793559600:F> [[+]](http://www.google.com/calendar/event?action=TEMPLATE&text=Scrimtest&details=&location=&dates=20261101T190000Z%2F20261101T200000Z) [[View on web]](https://app.apollo.fyi/workspaces/100000000000000007/events/30456243)\n <:emoji:878391707727716413> <t:1793559600:R>",
+          "inline": false
+        },
+        {
+          "name": "Location",
+          "value": "<#100000000000000002>",
+          "inline": false
+        },
+        {
+          "name": "<:accepted:713124484436983971> Accepted (8)",
+          "value": ">>> Player One\nApollo\nokeybot\nInterChat\nCarl-bot\nPlayer Two\nNon-discord-user\ntestuser",
+          "inline": true
+        },
+        {
+          "name": "<:declined:713124484688642068> Declined (1)",
+          "value": ">>> Organizer",
+          "inline": true
+        },
+        {
+          "name": "<:tentative:713214962641666109> Tentative",
+          "value": "-",
+          "inline": true
+        }
+      ],
+      "image": {
+        "url": "https://images.apollo.fyi/100000000000000007/f2ec86a1-b40d-4c55-9fc0-0810a1b5da8b.webp",
+        "proxy_url": "https://images-ext-1.discordapp.net/external/2LB_epbMs-xlBbT0wlzI-telRZ-mzierRgwO2D_NVTo/https/images.apollo.fyi/100000000000000007/f2ec86a1-b40d-4c55-9fc0-0810a1b5da8b.webp",
+        "width": 1498,
+        "height": 1050,
+        "content_type": "image/webp",
+        "placeholder": "ChgGBYIHZ5d5d3eEiSjIg1eAhwR4",
+        "placeholder_version": 1,
+        "flags": 0
+      },
+      "footer": {
+        "text": "Multiple signups are permitted\nCreated by Organizer"
+      }
+    }
+  ],
+  "timestamp": "2026-10-31T16:00:11.850000+00:00",
+  "edited_timestamp": "2026-10-31T16:23:09.073000+00:00",
+  "flags": 32,
+  "components": [
+    {
+      "type": 1,
+      "id": 1,
+      "components": [
+        {
+          "type": 2,
+          "id": 2,
+          "custom_id": "signup:85504002",
+          "style": 2,
+          "emoji": {
+            "id": "713124484436983971",
+            "name": "accepted"
+          }
+        },
+        {
+          "type": 2,
+          "id": 3,
+          "custom_id": "signup:85504003",
+          "style": 2,
+          "emoji": {
+            "id": "713124484688642068",
+            "name": "declined"
+          }
+        },
+        {
+          "type": 2,
+          "id": 4,
+          "custom_id": "signup:85504004",
+          "style": 2,
+          "emoji": {
+            "id": "713214962641666109",
+            "name": "tentative"
+          }
+        },
+        {
+          "type": 2,
+          "id": 5,
+          "custom_id": "manage:30456243",
+          "style": 1,
+          "label": "Edit"
+        },
+        {
+          "type": 2,
+          "id": 6,
+          "custom_id": "delete:30456243",
+          "style": 4,
+          "label": "Delete"
+        }
+      ]
+    }
+  ],
+  "id": "100000000000000004",
+  "channel_id": "100000000000000003",
+  "author": {
+    "id": "100000000000000006",
+    "username": "Apollo",
+    "avatar": "4a54729751b1dcb88c474cc49416d3eb",
+    "discriminator": "5552",
+    "public_flags": 65536,
+    "flags": 65536,
+    "bot": true,
+    "banner": null,
+    "accent_color": null,
+    "global_name": null,
+    "avatar_decoration_data": null,
+    "collectibles": null,
+    "display_name_styles": null,
+    "banner_color": null,
+    "clan": null,
+    "primary_guild": null
+  },
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "thread": {
+    "id": "100000000000000004",
+    "type": 11,
+    "last_message_id": "100000000000000005",
+    "flags": 0,
+    "guild_id": "100000000000000001",
+    "name": "Scrimtest - Nov 1",
+    "parent_id": "100000000000000003",
+    "rate_limit_per_user": 0,
+    "bitrate": 64000,
+    "user_limit": 0,
+    "rtc_region": null,
+    "owner_id": "100000000000000006",
+    "thread_metadata": {
+      "archived": false,
+      "archive_timestamp": "2026-10-31T16:00:12.921000+00:00",
+      "auto_archive_duration": 4320,
+      "locked": false,
+      "create_timestamp": "2026-10-31T16:00:12.921000+00:00"
+    },
+    "message_count": 1,
+    "member_count": 1,
+    "total_message_sent": 1
+  }
+}

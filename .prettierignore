@@ -1,0 +1,4 @@
+dist
+pnpm-lock.yaml
+packages/db/migrations/meta
+python/.venv

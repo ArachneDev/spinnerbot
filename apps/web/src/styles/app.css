@@ -1,0 +1,636 @@
+/* Spinner Bot's own layout, on top of the Arachne tokens and clan components. */
+:root {
+  /* In the design system's tokens.json, but not yet in its published tokens.css. */
+  --primary-text: #ed4b43;
+}
+
+html {
+  color-scheme: dark;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.rc-ticker {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.page-title--event {
+  overflow-wrap: anywhere;
+  font-size: clamp(32px, 6vw, 72px);
+}
+
+.page-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.section-heading {
+  margin: 0;
+  font: var(--text-section-heading);
+  text-transform: uppercase;
+}
+
+.helper {
+  margin: 0;
+  color: var(--muted-foreground);
+  font: var(--text-small);
+}
+
+/* The bar with save status and the placed count. */
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Who else is on the link, and this page's name. */
+.editors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.editors-name {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.editors-name input {
+  width: 14ch;
+}
+
+.status-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  margin: 0;
+  font: var(--text-small);
+}
+
+.status-line--error {
+  color: var(--primary-text);
+}
+
+.count {
+  font: var(--text-mono-label);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.loading {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font: var(--text-mono-label);
+  text-transform: uppercase;
+}
+
+.loading::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--primary);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading::before {
+    animation: none;
+  }
+}
+
+/* The board */
+.board-heading {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.unassigned {
+  position: relative;
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.unassigned-list {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  max-height: 248px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.squad-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 680px) {
+  .squad-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .squad-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1440px) {
+  .squad-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.squad {
+  position: relative;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--squad);
+  background: var(--card);
+}
+
+.drop-target {
+  box-shadow: inset 0 2px 0 var(--primary-text);
+  border-color: var(--primary);
+}
+
+.squad-head {
+  display: grid;
+  gap: 2px 8px;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  padding: 16px 16px 8px;
+}
+
+.squad-name {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--foreground);
+  font: var(--text-card-heading);
+  text-transform: uppercase;
+}
+
+.squad-name:hover:not(:disabled),
+.squad-name:focus {
+  border-bottom-color: var(--steel);
+}
+
+.squad-type {
+  grid-column: 2 / -1;
+  font: var(--text-mono-label);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.squad-count {
+  font: var(--text-mono-label);
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.squad-count strong {
+  color: var(--foreground);
+  font-weight: 400;
+}
+
+.icon-button.squad-toggle {
+  display: none;
+}
+
+.squad-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 64px;
+  margin: 0;
+  padding: 0 16px 16px;
+  list-style: none;
+}
+
+.squad-empty {
+  margin: 0;
+  padding: 8px 0;
+  color: var(--muted-foreground);
+  font: var(--text-small);
+}
+
+@media (max-width: 679px) {
+  .icon-button.squad-toggle {
+    display: inline-flex;
+    grid-row: 1;
+    grid-column: 5;
+  }
+
+  .squad-head {
+    grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+  }
+
+  .squad:not(.is-open) .squad-body {
+    display: none;
+  }
+}
+
+/* A player's row. */
+.player {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  min-height: 44px;
+  padding: 4px 4px 4px 12px;
+  list-style: none;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  transition: border-color 0.15s;
+}
+
+.player.can-drag {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.player.can-drag:hover {
+  border-color: var(--primary);
+}
+
+.player.is-dragging {
+  background: var(--secondary);
+  opacity: 0.4;
+}
+
+/* Another editor on the same link is dragging this player. */
+.player.is-moving-elsewhere {
+  border-style: dashed;
+  border-color: var(--warn, var(--primary));
+}
+
+.moving-by {
+  flex-shrink: 0;
+  font: 12px/16px var(--font-mono);
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.player.is-overlay {
+  border-color: var(--primary);
+  cursor: grabbing;
+  box-shadow: var(--glow-red);
+}
+
+.player-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font: 500 18px/28px var(--font-heading);
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.icon-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  color: var(--foreground);
+}
+
+.icon-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-button[aria-pressed="true"] {
+  color: var(--medal-gold);
+}
+
+.grip {
+  cursor: grab;
+  touch-action: none;
+}
+
+.player .rc-btn--nav {
+  height: 32px;
+  padding: 0 6px;
+  font-size: 13px;
+}
+
+.move-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  max-height: 280px;
+  margin: 2px 0 0;
+  padding: 4px;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--steel);
+  background: var(--popover);
+}
+
+.move-menu button {
+  width: 100%;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  font: var(--text-small);
+  text-align: left;
+}
+
+.move-menu button:hover,
+.move-menu button:focus {
+  background: var(--accent);
+}
+
+/* Options and the other answers */
+.panels {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  margin-top: 32px;
+}
+
+@media (min-width: 1024px) {
+  .panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.panel h2,
+.panel h3 {
+  margin: 0;
+  font: var(--text-card-heading);
+  text-transform: uppercase;
+}
+
+.panel p {
+  margin: 0;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font: var(--text-body);
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.field {
+  padding: 8px 10px;
+  border: 1px solid var(--steel);
+  background: var(--crest);
+  color: var(--foreground);
+  font: var(--text-small);
+}
+
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.answer-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.panel > .rc-btn {
+  align-self: flex-start;
+}
+
+.icon-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.squad-remove {
+  width: 24px;
+  height: 24px;
+}
+
+/* The embed designer and emoji picker */
+.panel--wide {
+  grid-column: 1 / -1;
+}
+
+.designer-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.designer-full {
+  grid-column: 1 / -1;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.form-field .field {
+  width: 100%;
+  font: var(--text-body);
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--steel);
+  cursor: pointer;
+}
+
+.swatch--auto {
+  width: auto;
+  padding: 0 10px;
+  background: transparent;
+  color: var(--foreground);
+  font: var(--text-small);
+}
+
+.swatch[aria-pressed="true"] {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+.colour-input {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--steel);
+  background: transparent;
+}
+
+.icon-choice {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font: var(--text-small);
+}
+
+.emoji-picker {
+  position: relative;
+  display: inline-flex;
+}
+
+.emoji-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 4px;
+  border: 1px solid var(--steel);
+  background: var(--crest);
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.emoji-button:disabled {
+  border-color: var(--border);
+  cursor: default;
+}
+
+.emoji-text {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.emoji-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(300px, 80vw);
+  max-height: 340px;
+  margin-top: 2px;
+  padding: 10px;
+  overflow-y: auto;
+  border: 1px solid var(--steel);
+  background: var(--popover);
+}
+
+.emoji-panel > .rc-btn {
+  align-self: flex-start;
+  height: 24px;
+  padding: 0;
+}
+
+.emoji-grid {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(auto-fill, 34px);
+}
+
+.emoji-grid button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.emoji-grid button:hover,
+.emoji-grid button:focus {
+  background: var(--accent);
+}

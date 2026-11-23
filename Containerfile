@@ -1,10 +1,27 @@
-# Non-root image. The pipeline passes VERSION (the release tag); /healthz returns it.
-FROM docker.io/library/node:22-alpine@sha256:12f54cafa58d0e96554ae05871e29663ff7241836377dc9a7916449b8adb062c
+# One image runs both containers. The Quadlet Exec line picks the process:
+#   node apps/web/dist/server/main.js   (default)
+#   node apps/bot/dist/main.js
+FROM docker.io/library/node:22.23.4-alpine3.24 AS build
 WORKDIR /app
-COPY package.json server.js ./
-ARG VERSION=dev
-ENV VERSION=$VERSION NODE_ENV=production
-# A numeric UID above 0: a name can map to root. The app only reads its files.
-USER 10001:10001
+RUN apk add --no-cache python3
+RUN npm install -g pnpm@12.16.1
+COPY . .
+RUN pnpm install --frozen-lockfile
+RUN pnpm build
+RUN CI=true pnpm install --frozen-lockfile --prod
+RUN python3 -m venv python/.venv && python/.venv/bin/pip install -q -r python/requirements.txt
+# Only deploy-commands.js and the database deploy-cli.js are used in production. The command
+# scaffolding and the dev-only migrate CLI are built with the rest, so leave them out of the image.
+# (Debug and test tools live in apps/bot/dev, which .dockerignore keeps out of the build entirely.)
+RUN rm -f apps/bot/dist/scripts/new-command.* apps/bot/dist/scripts/scaffold.* \
+      packages/db/dist/migrate-cli.*
+
+FROM docker.io/library/node:22.23.4-alpine3.24
+ARG APP_VERSION=dev
+ENV NODE_ENV=production APP_VERSION=$APP_VERSION
+RUN apk add --no-cache python3
+WORKDIR /app
+COPY --from=build /app /app
+USER node
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "apps/web/dist/server/main.js"]

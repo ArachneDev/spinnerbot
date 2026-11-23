@@ -1,0 +1,2 @@
+ALTER TABLE "roster_instances" ADD COLUMN "answer_options" jsonb DEFAULT '[{"key":"confirmed","label":"Confirm","emoji":{"name":"✅"}},{"key":"denied","label":"Can’t make it","emoji":{"name":"❌"}}]'::jsonb NOT NULL;--> statement-breakpoint
+ALTER TABLE "roster_instances" ADD COLUMN "emoji_options" jsonb;

@@ -1,0 +1,32 @@
+{
+  "name": "@scrimbot/bot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file=../../.env src/main.ts",
+    "commands:deploy": "tsx --env-file=../../.env src/scripts/deploy-commands.ts",
+    "steam:import": "tsx --env-file=../../.env src/scripts/import-steam-profiles.ts",
+    "e2e": "tsx --env-file=../../.env dev/e2e.ts",
+    "join-lobby:e2e": "tsx --env-file=../../.env dev/join-lobby-e2e.ts",
+    "tester:smoke": "tsx --env-file=../../.env dev/discord-smoke.ts",
+    "roster:status": "tsx --env-file=../../.env dev/roster-status.ts",
+    "emoji:upload": "tsx --env-file=../../.env dev/upload-emoji.ts",
+    "capture:message": "tsx --env-file=../../.env dev/capture-message.ts",
+    "dev-roles": "tsx --env-file=../../.env dev/dev-roles-cli.ts",
+    "role-url": "tsx --env-file=../../.env dev/role-url.ts"
+  },
+  "dependencies": {
+    "@fontsource/barlow": "5.3.0",
+    "@fontsource/oswald": "5.3.0",
+    "@fontsource/share-tech-mono": "5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@scrimbot/core": "workspace:*",
+    "@scrimbot/db": "workspace:*",
+    "discord.js": "~14.27.0",
+    "drizzle-orm": "^0.45.4",
+    "pino": "^10.4.0",
+    "satori": "^0.63.2",
+    "zod": "^4.6.7"
+  }
+}
