@@ -173,6 +173,19 @@ The migrations command runs as the database owner. It also sets the bot's and we
 
 Secrets can come from files: `DISCORD_TOKEN_FILE` and `DATABASE_URL_FILE`. Settings: the bot needs `DISCORD_TOKEN`, `DISCORD_APPLICATION_ID`, `DATABASE_URL` and `PUBLIC_URL`. The web needs `DATABASE_URL` and `PORT`.
 
+## Port
+
+The web listens on `PORT` (3000 in the image). The bot listens on no port.
+
+## Dependencies
+
+- PostgreSQL 18. The web and the bot connect as their own roles, `scrimbot_web` and `scrimbot_bot`, and the migrations need the owner role.
+- Outbound: the Discord API (bot) and `steamcommunity.com` (bot, for `/join-lobby`).
+
+## Memory
+
+Not measured on the new platform yet. The old setup capped the web at 256m, and the release pipeline's contract test runs it at 512m. Measure each container's peak with `podman stats` in the test slot (#57) and write it here.
+
 ## Volumes
 
 - The assets folder, mounted read-only, with its path in `ASSETS_DIR`. It holds the art listed under "Set up", which is not in the image because the image is public. The owner copies the files into the host folder once. The app works without it: the bot posts without the missing images, and the web returns 404 for them.

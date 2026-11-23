@@ -17,11 +17,12 @@ RUN rm -f apps/bot/dist/scripts/new-command.* apps/bot/dist/scripts/scaffold.* \
       packages/db/dist/migrate-cli.*
 
 FROM docker.io/library/node:22.23.4-alpine3.24
-ARG APP_VERSION=dev
-ENV NODE_ENV=production APP_VERSION=$APP_VERSION
+ARG VERSION=dev
+ENV NODE_ENV=production VERSION=$VERSION
 RUN apk add --no-cache python3
 WORKDIR /app
 COPY --from=build /app /app
-USER node
+# The node user, by number: a name could map to root.
+USER 1000:1000
 EXPOSE 3000
 CMD ["node", "apps/web/dist/server/main.js"]

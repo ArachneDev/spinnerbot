@@ -37,7 +37,7 @@ export function createApp(
   });
 
   /** Is the process up? Doesn't touch the database, so an outage won't restart this container. */
-  app.get("/healthz", (c) => c.json({ status: "ok" }));
+  app.get("/healthz", (c) => c.json({ status: "ok", version: process.env["VERSION"] ?? "dev" }));
 
   app.get("/readyz", async (c) => {
     try {

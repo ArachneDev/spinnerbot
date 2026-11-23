@@ -26,6 +26,18 @@ describe("web server", () => {
     expect((await app(true).request("/readyz")).status).toBe(200);
   });
 
+  it("names the build version in /healthz, which the release pipeline checks", async () => {
+    process.env["VERSION"] = "v9.9.9";
+    try {
+      expect(await (await app().request("/healthz")).json()).toEqual({
+        status: "ok",
+        version: "v9.9.9",
+      });
+    } finally {
+      delete process.env["VERSION"];
+    }
+  });
+
   it("mounts features under /api/<name>", async () => {
     const response = await app().request("/api/system/version");
     expect(response.status).toBe(200);
