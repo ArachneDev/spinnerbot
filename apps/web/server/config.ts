@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { z } from "zod";
 
 const schema = z.object({
-  databaseUrl: z.string({ error: "Set DATABASE_URL or DATABASE_URL_FILE" }).min(1),
+  databaseUrl: z.string({ error: "Set DATABASE_URL_FILE (or DATABASE_URL in development)" }).min(1),
   port: z.coerce.number().int().default(3000),
   logLevel: z.string().default("info"),
 });

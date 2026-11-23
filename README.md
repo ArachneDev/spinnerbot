@@ -50,7 +50,7 @@ podman run -d --rm --name spinnerbot-dev-db -e POSTGRES_PASSWORD=scrimbot -e POS
 pnpm db:migrate
 ```
 
-In `.env`, fill in `DISCORD_TOKEN`, `DISCORD_APPLICATION_ID` and `DISCORD_DEV_GUILD_ID` (your test server). Set `PUBLIC_URL` to where you open the roster page: `http://localhost:5173` on this machine, or the machine's address (for example `http://192.168.1.166:5173`) to open links from another device. The bot refuses to start without it.
+In `.env`, fill in `DISCORD_TOKEN` (in production it comes from `/run/secrets/app.json`), `DISCORD_APPLICATION_ID` and `DISCORD_DEV_GUILD_ID` (your test server). Set `PUBLIC_URL` to where you open the roster page: `http://localhost:5173` on this machine, or the machine's address (for example `http://192.168.1.166:5173`) to open links from another device. The bot refuses to start without it.
 
 The dev app needs the **Message Content** intent switched on in the Discord Developer Portal, or it can't read Apollo's embed. It needs View Channel and Read Message History where Apollo posts, and Send Messages and Embed Links where you run the command.
 
@@ -165,13 +165,12 @@ podman build -t localhost/spinnerbot:dev .
 | ---------------- | ------------------------------------------ |
 | Web (default)    | `node apps/web/dist/server/main.js`        |
 | Bot              | `node apps/bot/dist/main.js`               |
-| Migrations       | `node packages/db/dist/deploy-cli.js`      |
 | Web health check | `node apps/web/dist/server/healthcheck.js` |
 | Bot health check | `node apps/bot/dist/healthcheck.js`        |
 
-The migrations command runs as the database owner. It also sets the bot's and web's passwords from their secrets (`/run/secrets/db_owner_url`, `web_db_url`, `bot_db_url`). Development uses `pnpm db:migrate`, which is not in the image.
+Only the bot migrates the database. On start it applies the migrations as the owner role, sets the web's and its own role passwords from their URLs, and registers the slash commands (globally, or in `DISCORD_DEV_GUILD_ID`'s server when set). If the database or Discord login fails, it logs the reason and tries again with a growing wait (up to 60 s) instead of exiting, so it stays up while the problem is fixed. Check the logs when `/ping` doesn't answer. A missing or invalid setting exits at once.
 
-Secrets can come from files: `DISCORD_TOKEN_FILE` and `DATABASE_URL_FILE`. Settings: the bot needs `DISCORD_TOKEN`, `DISCORD_APPLICATION_ID`, `DATABASE_URL` and `PUBLIC_URL`. The web needs `DATABASE_URL` and `PORT`.
+The bot's health check prints the version and exits 0 while the bot's heartbeat, which it writes to `/tmp` every 30 s from the moment it starts, is fresh. The web's `/healthz` answers without the database, and `/readyz` returns 503 until the database and its role work.
 
 ## Port
 
@@ -180,7 +179,25 @@ The web listens on `PORT` (3000 in the image). The bot listens on no port.
 ## Dependencies
 
 - PostgreSQL 18. The web and the bot connect as their own roles, `scrimbot_web` and `scrimbot_bot`, and the migrations need the owner role.
+- Secrets. `/run/secrets/app.json` holds `DISCORD_TOKEN` (the web has no Discord login, so there is no client secret). Database URLs contain platform passwords, so each is its own secret file, and an app lists only the ones it needs:
+  - Web: `DATABASE_URL_FILE`, its own URL (`scrimbot_web`).
+  - Bot: `DATABASE_URL_FILE`, its own URL (`scrimbot_bot`); `DATABASE_OWNER_URL_FILE`, the owner URL, to migrate; and `DATABASE_WEB_URL_FILE`, the web's URL, to set the web role's password.
+  - Without `DATABASE_OWNER_URL_FILE` the bot does not migrate, which is how `pnpm dev` runs it. In development, plain `DISCORD_TOKEN` and `DATABASE_URL` in `.env` work too. `APP_SECRETS_FILE` points at another secrets file.
 - Outbound: the Discord API (bot) and `steamcommunity.com` (bot, for `/join-lobby`).
+
+## Privacy
+
+Spinner Bot stores Discord user IDs: the roster leader, each person's answer on a roster, and the Steam profile a member links for `/join-lobby`. Rosters and their answers are deleted when they expire. The web page footer carries a short privacy note.
+
+To delete a person's data on request, the owner runs this in the database as the owner role, with the person's Discord user ID:
+
+```sql
+delete from roster_responses where user_id = '<id>';
+delete from steam_profiles where discord_user_id = '<id>';
+delete from roster_instances where owner_id = '<id>';
+```
+
+Deleted data stays in backups until those snapshots rotate out. Rotation is by size only, so that can take a long time, and the privacy note says so.
 
 ## Memory
 

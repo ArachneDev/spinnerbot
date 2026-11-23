@@ -1,5 +1,4 @@
 import type { DatabaseHandle } from "@scrimbot/db";
-import type { Logger } from "./logger.js";
 
 /** Host, port and database of a connection URL, without the credentials. */
 function describeTarget(url: string): string {
@@ -7,18 +6,17 @@ function describeTarget(url: string): string {
     const { hostname, port, pathname } = new URL(url);
     return `${hostname}:${port || "5432"}${pathname}`;
   } catch {
-    return "(DATABASE_URL is not a valid URL)";
+    return "(the database URL is not valid)";
   }
 }
 
 /**
- * Fails fast, with a reason and a fix, when the database can't be used. The bot needs it for the
- * job queue that carries requests from the web app, so there is no useful degraded mode.
+ * Throws, with a reason and a fix, when the database can't be used. The bot needs it for the job
+ * queue that carries requests from the web app, so the caller retries until it works.
  */
 export async function assertDatabaseReady(
   database: DatabaseHandle,
   databaseUrl: string,
-  log: Logger,
 ): Promise<void> {
   const target = describeTarget(databaseUrl);
   try {
@@ -38,19 +36,15 @@ export async function assertDatabaseReady(
             ]
           : code === "28P01" || code === "28000" || code === "3D000"
             ? [
-                `Postgres at ${target} refused the login or database in DATABASE_URL.`,
+                `Postgres at ${target} refused the login or database.`,
                 "Check the user, password and database name.",
               ]
             : code === "42501"
               ? [
                   `Connected to ${target}, but this role lacks permission on bot_jobs.`,
-                  "DATABASE_URL must use the scrimbot_bot role, and migrations must have run.",
+                  "The URL must use the scrimbot_bot role, and migrations must have run.",
                 ]
               : [`Could not use the database at ${target}.`, "See the error below."];
-    log.fatal(
-      { err: error, database: target },
-      `${reason} ${fix} The bot cannot start without it.`,
-    );
-    process.exit(1);
+    throw new Error(`${reason} ${fix}`, { cause: error });
   }
 }

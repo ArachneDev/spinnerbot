@@ -1,4 +1,4 @@
-# One image runs both containers. The Quadlet Exec line picks the process:
+# One image runs both containers. The platform picks the process:
 #   node apps/web/dist/server/main.js   (default)
 #   node apps/bot/dist/main.js
 FROM docker.io/library/node:22.23.4-alpine3.24 AS build
@@ -12,8 +12,8 @@ RUN pnpm build
 RUN rm -rf node_modules apps/*/node_modules packages/*/node_modules \
     && CI=true pnpm install --frozen-lockfile --prod
 RUN python3 -m venv python/.venv && python/.venv/bin/pip install -q -r python/requirements.txt
-# Only deploy-commands.js and the database deploy-cli.js are used in production. The command
-# scaffolding and the dev-only migrate CLI are built with the rest, so leave them out of the image.
+# The command scaffolding and the dev-only migrate CLI are built with the rest, so leave them out
+# of the image.
 # (Debug and test tools live in apps/bot/dev, which .dockerignore keeps out of the build entirely.)
 RUN rm -f apps/bot/dist/scripts/new-command.* apps/bot/dist/scripts/scaffold.* \
       packages/db/dist/migrate-cli.*

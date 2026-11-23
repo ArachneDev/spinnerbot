@@ -41,7 +41,7 @@ export function createApp(
 
   app.get("/readyz", async (c) => {
     try {
-      await context.database.sql`select 1`;
+      await context.database.sql`select 1 from guilds limit 0`;
       return c.json({ status: "ok" });
     } catch (error) {
       context.log.warn({ err: error }, "Database unavailable");

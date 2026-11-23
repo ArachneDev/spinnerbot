@@ -66,7 +66,7 @@ Through Postgres:
 
 ## Database and roles
 
-The bot and web connect as their own roles, so a compromised web container can't run jobs or rewrite history. In production `packages/db/dist/deploy-cli.js` runs the migrations as the owner and sets each role's password from its secret. In dev, `pnpm dev` (or `pnpm db:dev-roles`) gives the roles a local password, so dev runs under the same grants.
+The bot and web connect as their own roles, so a compromised web container can't run jobs or rewrite history. In production the bot runs the migrations as the owner on start (`prepareDatabase`) and sets each role's password from its secret. In dev, `pnpm dev` (or `pnpm db:dev-roles`) gives the roles a local password, so dev runs under the same grants.
 
 | Table                   | Holds                                               | Web role                                                                                                                                                                                                                                                                                                            | Bot role             |
 | ----------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
