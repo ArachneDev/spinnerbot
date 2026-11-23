@@ -1,7 +1,7 @@
 # One image runs both containers. The Quadlet Exec line picks the process:
 #   node apps/web/dist/server/main.js   (default)
 #   node apps/bot/dist/main.js
-FROM docker.io/library/node:22.23.4-alpine3.24 AS build
+FROM docker.io/library/node:26.13.1-alpine3.24 AS build
 WORKDIR /app
 RUN apk add --no-cache python3
 RUN npm install -g pnpm@12.16.1
@@ -18,7 +18,7 @@ RUN python3 -m venv python/.venv && python/.venv/bin/pip install -q -r python/re
 RUN rm -f apps/bot/dist/scripts/new-command.* apps/bot/dist/scripts/scaffold.* \
       packages/db/dist/migrate-cli.*
 
-FROM docker.io/library/node:22.23.4-alpine3.24
+FROM docker.io/library/node:26.13.1-alpine3.24
 ARG VERSION=dev
 ENV NODE_ENV=production VERSION=$VERSION
 RUN apk add --no-cache python3
