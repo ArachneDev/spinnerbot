@@ -8,7 +8,9 @@ RUN npm install -g pnpm@12.16.1
 COPY . .
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
-RUN CI=true pnpm install --frozen-lockfile --prod
+# A fresh production-only install: --prod alone leaves the build tools (esbuild and others) in the store.
+RUN rm -rf node_modules apps/*/node_modules packages/*/node_modules \
+    && CI=true pnpm install --frozen-lockfile --prod
 RUN python3 -m venv python/.venv && python/.venv/bin/pip install -q -r python/requirements.txt
 # Only deploy-commands.js and the database deploy-cli.js are used in production. The command
 # scaffolding and the dev-only migrate CLI are built with the rest, so leave them out of the image.
