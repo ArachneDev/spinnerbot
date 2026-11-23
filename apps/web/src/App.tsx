@@ -32,6 +32,12 @@ export function App() {
           <div className="rc-footer__legal">
             <span>[RCNE] // WARDOGS COMPETITIVE UNIT</span>
             <span>INDEPENDENT CLAN. UNITED BY THE WEB.</span>
+            <span>
+              Privacy: Spinner Bot keeps Discord user IDs and Steam links for rosters and
+              /join-lobby. Rosters are deleted when they expire. Ask a Wardogs admin to delete your
+              data; copies stay in backups until old snapshots rotate out, which can take a long
+              time.
+            </span>
           </div>
         </div>
       </footer>

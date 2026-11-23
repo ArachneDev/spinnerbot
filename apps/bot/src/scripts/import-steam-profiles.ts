@@ -4,6 +4,7 @@ import { createDatabase, schema } from "@scrimbot/db";
 import { REST, Routes, type APIGuildMember } from "discord.js";
 import { matchMember, searchNames } from "../features/join-lobby/import-match.js";
 import { steam } from "../features/join-lobby/steam.js";
+import { appSecret } from "../framework/config.js";
 
 // Fills steam_profiles from a Discord channel copied as text. The copy holds display names and no
 // user IDs, so each name is looked up in the server, and only a single exact match counts.
@@ -15,8 +16,7 @@ import { steam } from "../features/join-lobby/steam.js";
 const args = process.argv.slice(2);
 const apply = args.includes("--apply");
 const [file, guildId] = args.filter((arg) => arg !== "--apply");
-const tokenFile = process.env["DISCORD_TOKEN_FILE"];
-const token = tokenFile ? readFileSync(tokenFile, "utf8").trim() : process.env["DISCORD_TOKEN"];
+const token = appSecret("DISCORD_TOKEN");
 const databaseFile = process.env["DATABASE_URL_FILE"];
 const databaseUrl = databaseFile
   ? readFileSync(databaseFile, "utf8").trim()

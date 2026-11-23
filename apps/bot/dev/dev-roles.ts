@@ -1,6 +1,6 @@
 /**
  * Development only. In production the bot and web connect as scrimbot_bot and scrimbot_web, whose
- * passwords deploy-cli sets from Podman secrets. In dev everything would otherwise run as the
+ * passwords the bot sets from Podman secrets (prepareDatabase). In dev everything would otherwise run as the
  * owner, which can do anything, so a missing permission would only show up after deploying.
  * These helpers give the two roles a fixed local password, so dev runs under the same grants.
  * Lives outside the built code, so none of it is in the production image.
